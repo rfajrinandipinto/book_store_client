@@ -1,13 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Books from './pages/Books';
+import Add from './pages/Add';
+import Update from './pages/Update';
+import "./style.css"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Books />,
+  },
+  {
+    path: "/add",
+    element: <Add />,
+  },
+  {
+    path: "/update/:id",
+    element: <Update />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+    
   </React.StrictMode>
 );
 
